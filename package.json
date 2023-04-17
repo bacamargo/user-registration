@@ -1,0 +1,19 @@
+{
+  "name": "user-registration",
+  "version": "1.0.0",
+  "description": "CRUD project using Node.js, React.js and PostgreSQL",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bacamargo/user-registration.git"
+  },
+  "author": "\"Bárbara Camargo\"",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bacamargo/user-registration/issues"
+  },
+  "homepage": "https://github.com/bacamargo/user-registration#readme"
+}
