@@ -4,6 +4,7 @@
   "description": "CRUD project using Node.js, React.js and PostgreSQL",
   "main": "index.js",
   "scripts": {
+    "dev": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,5 +16,12 @@
   "bugs": {
     "url": "https://github.com/bacamargo/user-registration/issues"
   },
-  "homepage": "https://github.com/bacamargo/user-registration#readme"
+  "homepage": "https://github.com/bacamargo/user-registration#readme",
+  "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "nodemon": "^2.0.22",
+    "path": "^0.12.7"
+  }
 }
