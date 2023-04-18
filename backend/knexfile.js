@@ -1,3 +1,5 @@
+const db = require('./.env')
+
 // configuração para acessar o banco do postgresql
 module.exports = {
     client: 'postgresql',

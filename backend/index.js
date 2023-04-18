@@ -6,6 +6,7 @@ app.db = db
 
 // modulo para ajudar a relacionar as dependencias entre os arquivos de forma mais otimizada
 consign()
+    .include('./config/passport.js')
     .then('./config/middlewares.js')
     .then('./api/validation.js')
     .then('./api')
