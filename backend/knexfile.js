@@ -1,3 +1,4 @@
+// configuração para acessar o banco do postgresql
 module.exports = {
     client: 'postgresql',
     connection: {

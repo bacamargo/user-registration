@@ -3,11 +3,13 @@ const bcrypt = require('bcrypt-nodejs')
 module.exports = app => {
     const { existsOrError, notExistsOrError, equalsOrError } = app.api.validation
 
-    const encryptPassword = password => {
+    // função para criptografar a senha do usuário
+    const encryptPassword = password => { 
         const salt = bcrypt.genSaltSync(10)
         return bcrypt.hashSync(password, salt)
     }
 
+    // função para salvar o usuário no banco de dados a partir dos parâmetros passados, como nome, email e senha e tratar erros para campos não preenchidos ou inválidos
     const save = async (req, res) => {
         const user = { ...req.body }
         if(req.params.id) user.id = req.params.id
@@ -19,6 +21,7 @@ module.exports = app => {
             existsOrError(user.confirmPassword, 'Invalid password confirmation')
             equalsOrError(user.password, user.confirmPassword, 'Passwords do not match')
 
+            // checagem caso o usuário já esteja cadastrado no banco
             const userFromDb = await app.db('users')
                 .where( { email: user.email }).first()
             if(!user.id) {
@@ -28,9 +31,11 @@ module.exports = app => {
             return res.status(400).send(msg)
         }
 
+        // criptografia de senha e deleção da confirmação de senha, que não vai aparecer na requisição e no banco
         user.password = encryptPassword(user.password)
         delete user.confirmPassword
 
+        // uptade de usuário
         if(user.id) {
             app.db('users')
                 .update(user)
@@ -45,6 +50,7 @@ module.exports = app => {
         }
     }
 
+    // busca de usuários
     const get = (req, res) => {
         app.db('users')
             .select('id', 'name', 'email', 'admin')
@@ -52,6 +58,7 @@ module.exports = app => {
             .catch(err => res.status(500).send(err))
     }
 
+    // busca de usuários por id
     const getById = (req, res) => {
         app.db('users')
             .select('id', 'name', 'email', 'admin')

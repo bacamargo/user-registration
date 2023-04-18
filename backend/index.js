@@ -4,6 +4,7 @@ const db = require('./config/db')
 
 app.db = db
 
+// modulo para ajudar a relacionar as dependencias entre os arquivos de forma mais otimizada
 consign()
     .then('./config/middlewares.js')
     .then('./api/validation.js')
