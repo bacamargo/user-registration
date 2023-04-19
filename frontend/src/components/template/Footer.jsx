@@ -3,5 +3,7 @@ import React from 'react'
 
 export default properties =>
     <footer className="footer">
-        Footer
+        <span>
+            Developed from <strong>outer space</strong> - Bárbara Camargo
+        </span>
     </footer>

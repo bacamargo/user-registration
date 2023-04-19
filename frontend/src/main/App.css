@@ -15,6 +15,7 @@
 * {
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
+    color: #fff;
 }
 
 /* Layout em grid */
@@ -31,7 +32,7 @@
         "menu content"
         "menu footer";
     height: 100vh;
-    background-color: #F5F5F5;
+    background-color: #131313;
 }
 
 aside.logo {
