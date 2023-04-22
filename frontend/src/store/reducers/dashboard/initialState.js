@@ -9,14 +9,14 @@ const initialState = {
 					text: 'Home',
 					icon: 'fa fa-rocket'
 				},
-				subtitle: 'Outer Space'
+				subtitle: 'List of Users. To update or remove users, you need to be admin.'
 			}, 
 			{
 				title: {
 					text: 'System administration',
 					icon: 'fa fa-user-secret'
 				},
-				subtitle: 'Users and registration info'
+				subtitle: 'Users and registration info. You can edit to update a user or delete it.'
 			}
 		]
 	},

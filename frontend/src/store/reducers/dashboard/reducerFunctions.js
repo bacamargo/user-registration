@@ -3,7 +3,7 @@ export const toggleMenu = (state, action) =>
 
 export const toggleTitle = (state, action) => {
 	const newState = { ...state }
-	newState.titles.index = action.data.titleIndex === 2 ? state.user.admin ? action.data.titleIndex : state.titles.index : action.data.titleIndex
+	newState.titles.index = action.data.titleIndex === 1 ? state.user.admin ? action.data.titleIndex : state.titles.index : action.data.titleIndex
 	if (action.data.titleIndex !== 0) {
 		newState.titles.lables[0].text = 'Dashboard'
 	}

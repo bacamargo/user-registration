@@ -1,3 +1,5 @@
+// Define a variável para o arquivo .env para acessar acessado pela variável global `process.env`
+require('dotenv').config();
 const app = require('express')()
 const consign = require('consign')
 const db = require('./config/db')

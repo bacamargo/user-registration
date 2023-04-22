@@ -7,11 +7,12 @@ import io from '../../../../socket'
 
 import { AreaStats as AreaStatsStyle } from './styles'
 
-import Stat from './Stat/'
+import List from './List'
 
 const Home = ({ token }) => {
 	const [request, setRequest] = useState({ status: null, finished: false })
-	const [data, setData] = useState({ users: 0 })
+	const [users, setUsers] = useState([])
+	const [error, setError] = useState(false);
 
 	io.on('connect_error', () => setRequest({ ...request, status: false }))
 	io.on('connect', () => {
@@ -19,27 +20,25 @@ const Home = ({ token }) => {
 	})
 
 	const doRequest = () => {
-		api('/stats', { headers: { 'Authorization': `bearer ${token}` } })
+		api('/users', { headers: { 'Authorization': `bearer ${token}` } })
 			.then(({ data }) => {
 				setRequest({ status: true, finished: true })
-				setData({ users: data.users })
+				setUsers(data)
+				setError(false);
 			})
 			.catch(e =>	{
+				setError(true);
 				setRequest({  status: false, finished: true })
 			})	
 	}
 
-	io.on('new_stats', () => {
-		doRequest()
-	})
-
 	useEffect(() => {
-		!request.finished && doRequest()
-	}, [request, token])
+		!request.finished && doRequest(token)
+	}, [token])
 
 	return (
 		<AreaStatsStyle>
-			<Stat req={ request } value={ data.users } label='Users' color='#3282CD' icon='fa-user' />
+			<List users={users} error={error} label='Users' color='#3282CD' icon='fa-user' />
 		</AreaStatsStyle>
 	)
 }

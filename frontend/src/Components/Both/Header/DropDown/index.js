@@ -20,7 +20,7 @@ const DropDown = ({ name, email, admin, dispatch, history }) =>
       <i className='fa fa-angle-down'></i>
     </DropDownVisibleStyle>
     <DropDownHiddenStyle>
-      { admin ? <span onClick={() => dispatch(actions.toggleTitle(2))}><i className='fa fa-cog'></i><label>Admin</label></span> : null }
+      { admin ? <span onClick={() => dispatch(actions.toggleTitle(1))}><i className='fa fa-cog'></i><label>Admin</label></span> : null }
       <span onClick={() => {
         dispatch(actions.logout())
         localStorage.removeItem(userInLocalStorage)

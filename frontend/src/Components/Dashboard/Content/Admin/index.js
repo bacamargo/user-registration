@@ -14,7 +14,7 @@ const Admin = ({ token }) => {
           <Tab label='Users' tab={ tab } setTab={ setTab } index='1' />
         </Nav>
         <TabContent activeTab={tab}>
-            { +tab === 1 && <User token={ token } /> }
+            { +tab === '1' && <User token={ token } /> }
         </TabContent>
       </Card>
 	)

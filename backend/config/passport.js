@@ -1,11 +1,10 @@
-const { authSecret } = require('../.env')
 const passport = require('passport')
 const passportJwt = require('passport-jwt')
 const { Strategy, ExtractJwt } = passportJwt
 
 module.exports = app => {
     const params = {
-        secretOrKey: authSecret,
+        secretOrKey: process.env.SECRET_KEY,
         jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken()
     }
 

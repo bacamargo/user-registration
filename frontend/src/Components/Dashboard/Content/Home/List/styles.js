@@ -18,11 +18,22 @@ export const Icon = styled.div`
 
 	display: flex;
 	align-items: center;
+	margin-left: 10px;
 
 	> i {
 		color: ${({ iconColor }) => iconColor};
 		font-size: 5em;
 	}
+`
+
+export const UserBlock = styled.div`
+	display: flex;
+	justify-content: space-between;
+	margin: 10px;
+	width: 100%;
+	border: 1px solid white;
+	padding: 10px;
+	border-radius: 4px;
 `
 
 export const Info = styled.div`
@@ -39,7 +50,7 @@ export const Info = styled.div`
 `
 
 export const Value = styled.span`
-	${({ type }) => type === 'string' ? `
+	${({ type }) => type === 'error' ? `
 		font-size: 14px;
 		color: red;
 		opacity: .7;
