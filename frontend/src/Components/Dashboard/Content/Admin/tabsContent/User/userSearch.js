@@ -1,5 +1,7 @@
 import { changeFilter, changeInTable } from'../search'
 
+
+// mecanismos de busca por email e por admin
 export const searchByEmail = (filtersTerms, filter, inTable, key) => {
   const newFiltersTerms = changeFilter(filtersTerms, 'email', key)
 

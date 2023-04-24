@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 
+// estilização da página principal com a lista de usuários e responsividade
 export const Area = styled.div`
 	flex: 1;
 
@@ -12,6 +13,7 @@ export const Area = styled.div`
 	box-shadow: 0 1px 5px rgba(0, 0, 0, .15);
 
 	display: flex;
+	
 `
 
 export const Icon = styled.div`
@@ -34,6 +36,49 @@ export const UserBlock = styled.div`
 	border: 1px solid white;
 	padding: 10px;
 	border-radius: 4px;
+
+	/* Resolution 1150x700 */
+  	@media (max-width: 1150px) and (max-height: 700px) {
+    	padding: 15px;
+    	font-size: 0.9rem;
+  	}
+  
+  	/* Resolution 1280x650 */
+  	@media (max-width: 1280px) and (max-height: 650px) {
+    	padding: 12px;
+    	font-size: 0.8rem;
+  	}
+  
+  	/* Resolution 1366x768 */
+  	@media (max-width: 1366px) and (max-height: 768px) {
+    	padding: 10px;
+    	font-size: 0.8rem;
+  	}
+  
+  	/* Resolution 1440x900 */
+  	@media (max-width: 1440px) and (max-height: 900px) {
+    	padding: 8px;
+    	font-size: 0.7rem;
+  	}
+  
+  	/* Resolution 1920x1000 */
+  	@media (max-width: 1920px) and (max-height: 1000px) {
+    	padding: 6px;
+    	font-size: 0.6rem;
+  	}
+  
+  	/* Resolution 600x700 */
+  	@media (max-width: 600px) and (max-height: 700px) {
+    	padding: 15px;
+    	font-size: 0.9rem;
+  	}
+  
+  	/* Resolution 800x700 */
+  	@media (max-width: 800px) and (max-height: 700px) {
+    	padding: 12px;
+    	font-size: 0.8rem;
+  	}
+	
 `
 
 export const Info = styled.div`
@@ -47,6 +92,7 @@ export const Info = styled.div`
 	:hover {
 		cursor: default;
 	}
+
 `
 
 export const Value = styled.span`

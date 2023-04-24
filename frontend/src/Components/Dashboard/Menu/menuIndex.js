@@ -5,13 +5,12 @@ import TreeMenu from 'react-simple-tree-menu'
 
 import * as actions from '../../../store/reducers/dashboard/actions'
 
-import { 
-	Area as AreaStyle 
-} from './styles'
+import { Area as AreaStyle } from './menuStyle'
 
+// menu ao lado esquerdo, caso, no futuro, queira acrescentar outras páginas para navegação.. por enquanto é inutilizado
 const Menu = ({ menu, token, index, dispatch }) => {
-	const [node, setNode] = useState([])
-	const [requestSituation, setRequestSituation] = useState({ failed: false })
+	const [node] = useState([])
+	const [requestSituation] = useState({ failed: false })
 
 
 	return menu && <AreaStyle>

@@ -1,3 +1,5 @@
+// filtros de pesquisa por usuário 
+
 export const changeInTable = (inTable, filter, field, filterLabel, key) => {
   const newInTable = { ...inTable }
 

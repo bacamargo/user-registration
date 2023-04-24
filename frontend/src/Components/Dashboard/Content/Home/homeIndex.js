@@ -5,10 +5,11 @@ import api from '../../../../api'
 
 import io from '../../../../socket'
 
-import { AreaStats as AreaStatsStyle } from './styles'
+import { AreaStats as AreaStatsStyle } from './homeStyle'
 
-import List from './List'
+import List from './List/listIndex'
 
+// requisição para o backend da lista de usuários 
 const Home = ({ token }) => {
 	const [request, setRequest] = useState({ status: null, finished: false })
 	const [users, setUsers] = useState([])

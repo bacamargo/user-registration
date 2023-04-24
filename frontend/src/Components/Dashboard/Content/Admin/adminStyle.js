@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 
+// estilização da página de admin
 export const Tr = styled.tr`
 	transition: background .2s ease-in;
 
@@ -7,6 +8,7 @@ export const Tr = styled.tr`
 		background: rgba(0, 0, 0, .2) !important;
 		cursor: default;
 	}
+	
 `
 
 export const Thead = styled.th`

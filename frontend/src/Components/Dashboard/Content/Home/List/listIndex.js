@@ -1,8 +1,8 @@
 import React from 'react'
 
-import { Area as AreaStyle, Icon as IconStyle, Info as InfoStyle, Title as TitleStyle, Value as ValueStyle, UserBlock } from './styles'
+import { Area as AreaStyle, Icon as IconStyle, Info as InfoStyle, Title as TitleStyle, Value as ValueStyle, UserBlock } from './listStyle'
 
-
+// chamada para a lista de usuários aparecer na tela da homepage
 const List = ({ error, label, color, icon, users }) => {
   const userBlock = (user) => {
     return (

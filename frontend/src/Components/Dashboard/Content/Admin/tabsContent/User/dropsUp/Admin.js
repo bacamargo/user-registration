@@ -1,8 +1,7 @@
 import React from 'react'
-import {
-	ButtonGroup, Button  
-} from 'reactstrap'
+import { ButtonGroup, Button } from 'reactstrap'
 
+// configurações de busca para admin
 const Admin = ({ search, value }) =>
 	<ButtonGroup size="sm">
 	  <Button onClick={() => search(0)}>All</Button>

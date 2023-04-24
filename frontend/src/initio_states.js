@@ -1,5 +1,6 @@
 export const userInLocalStorage = '__user'
 
+// definição do estado inicial para cada dado, componente e página da aplicação
 export const toasts = {
 		autoDismiss: true,
 	  	pouseOnHover: true		

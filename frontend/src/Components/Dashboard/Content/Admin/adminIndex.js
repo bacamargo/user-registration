@@ -2,9 +2,10 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { TabContent, Nav,Card } from 'reactstrap'
 
-import Tab from './Tab/'
-import User from './tabsContent/User'
+import Tab from './Tab/tabIndex'
+import User from './tabsContent/User/userIndex'
 
+// chamada para a lista de usuários na página de administrador
 const Admin = ({ token }) => {
 	const [tab, setTab] = useState('1')
 
@@ -14,7 +15,7 @@ const Admin = ({ token }) => {
           <Tab label='Users' tab={ tab } setTab={ setTab } index='1' />
         </Nav>
         <TabContent activeTab={tab}>
-            { +tab === '1' && <User token={ token } /> }
+            { tab === '1' && <User token={ token } /> }
         </TabContent>
       </Card>
 	)

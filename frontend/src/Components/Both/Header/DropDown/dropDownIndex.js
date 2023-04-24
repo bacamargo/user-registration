@@ -8,10 +8,11 @@ import * as actions from '../../../../store/reducers/dashboard/actions'
 import { userInLocalStorage } from '../../../../initio_states'
 
 import { DropDown as DropDownStyle, DropDownVisible as DropDownVisibleStyle, DropDownHidden as DropDownHiddenStyle
-} from './styles'
+} from './dropDownStyle'
 
 const makeHash = email => hash.sha256().update(email).digest('hex')
 
+// configurações do menu que desce ao passar o cursor do mouse pelo nome do usuário ativo na aplicação 
 const DropDown = ({ name, email, admin, dispatch, history }) => 
   <DropDownStyle>
     <DropDownVisibleStyle>
@@ -20,7 +21,8 @@ const DropDown = ({ name, email, admin, dispatch, history }) =>
       <i className='fa fa-angle-down'></i>
     </DropDownVisibleStyle>
     <DropDownHiddenStyle>
-      { admin ? <span onClick={() => dispatch(actions.toggleTitle(1))}><i className='fa fa-cog'></i><label>Admin</label></span> : null }
+      <span><i className='fa fa-cog'></i><a href="/dashboard/home">Dashboard</a></span>
+      { admin ? <span><i className='fa fa-cog'></i><a href="/dashboard/admin">Admin</a></span> : null }
       <span onClick={() => {
         dispatch(actions.logout())
         localStorage.removeItem(userInLocalStorage)

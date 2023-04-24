@@ -1,4 +1,4 @@
-
+// para a tela de login, estabelecimento dos dados necessários e respostas de alerta ao preencher o formulário
 export default {
 	setFocus(id) {
 		setTimeout(() => document.getElementById(id).focus(), 300)

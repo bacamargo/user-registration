@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { useToasts } from 'react-toast-notifications'
-import PaginationComponent from 'react-reactstrap-pagination'
 import { Table, Button, Form, FormGroup, Label, Input, Row, Col, CustomInput } from 'reactstrap'
 
-import io from '../../../../../../socket'
-
-import * as doSearch from './search'
+import * as doSearch from './userSearch'
 import { searchByName } from '../search'
 
 import functions from '../../../../../../functions'
@@ -14,18 +11,12 @@ import api from '../../../../../../api'
 
 import { pageAdmin, toasts } from '../../../../../../initio_states'
 
-import {
-	Tr as TrStyle,
-	Thead as TheadStyle,	
-	Search as SearchStyle,
-  Filter as FilterStyle,
-  TheadTitle as TheadTitleStyle,
-  PaginationArea as PaginationAreaStyle
-} from '../../styles'
+import { Tr as TrStyle, Thead as TheadStyle, Search as SearchStyle, Filter as FilterStyle, TheadTitle as TheadTitleStyle, PaginationArea as PaginationAreaStyle } from '../../adminStyle'
 
 import DropUp from '../DropUp'
 import AdminDropUp from './dropsUp/Admin'
 
+// configurações para a chamada do component User e fazer as requests de acordo com as rotas passadas, bem como as opções de atualizar e deletar usuários
 const User = ({ token }) => {
   const { addToast } = useToasts()
   const [pageActual, setPageActual] = useState(1)
@@ -42,26 +33,18 @@ const User = ({ token }) => {
       .then(({ data }) => {
             setPageSettings({ count: data.count || 1, limit: data.limit })
             const users = { ...pageAdmin.userComponent.INITIO_INTABLE }
-            users.users = data.data
+            users.users = data || [];
             users.ready = true
             users.failed = false
-            setInTable(users)
+            setInTable(users);
           })
       .catch(e => {
         const users = { ...pageAdmin.userComponent.INITIO_INTABLE }
         users.ready = true
         users.failed = true
-        setInTable(users)
+        setInTable(users);
       })
   }
-
-  io.on('connect', () => {
-    inTable.failed && doRequest(pageActual)
-  })
-
-  io.on('disconnect', () => {
-    setInTable({ ...inTable, failed: true })
-  })
 
 	useEffect(() => {
     doRequest()
@@ -171,6 +154,7 @@ const User = ({ token }) => {
             .then(() => {
               setMode({ ...pageAdmin.global.INITIO_MODE })
               setUser({ ...pageAdmin.userComponent.INITIO_USER })
+              addToast('User successfully added', {...toasts, appearance: 'success'})
 
               if (inTable.users.length < pageSettings.limit) {             
                 doRequest(pageActual)
@@ -178,10 +162,11 @@ const User = ({ token }) => {
                 setPageSettings({ ...pageSettings, count: pageSettings.count + 1 })
               }
               addToast('User successfully registered', { ...toasts, appearance: 'success' })
+              
             })
             .catch(() => {
               setMode({ ...mode, exec: false })
-              addToast('Register not made', { ...toasts, appearance: 'error' })
+              addToast('Register not made. Please log out and go to the signup page to register a new user filling the form.', { ...toasts, appearance: 'error' })
             })   
       }
     } catch({ message, appearance, focus }) {
@@ -246,7 +231,7 @@ const User = ({ token }) => {
         <thead>
           <tr>
             <TheadTitleStyle colSpan='5'>
-              <FilterStyle on={ filter[0] !== 'All' }><i title='Tirar filtro' onClick={ noFilter } className='fa fa-power-off'></i> { filter[0].length ? filter.join(' > ') : 'All >' }</FilterStyle>
+              <FilterStyle><i title='Remove filter' onClick={() => noFilter()} className='fa fa-power-off'></i> { filter[0].length ? filter.join(' > ') : 'All >' }</FilterStyle>
               Platform users
             </TheadTitleStyle>
           </tr>
@@ -262,13 +247,13 @@ const User = ({ token }) => {
             </TheadStyle>
             <TheadStyle active={ divSearch.opened && divSearch.which === 'admin' } term={ filter[0] === 'Admin' } className='dropup'>Admin
               <SearchStyle visible={ divSearch.opened && divSearch.which === 'admin' }> <AdminDropUp search={ key => search('searchByAdmin', key) } value={ filtersTerms.admin } /> </SearchStyle>
-              <span className='icon-filter' onClick={ () => openOrCloseDivSearch('admin') } title='Filtrar by privilege'><i className='fa fa-filter'></i></span>
+              <span className='icon-filter' onClick={ () => openOrCloseDivSearch('admin') } title='Filter by privilege'><i className='fa fa-filter'></i></span>
             </TheadStyle>  
             <TheadStyle style={{ width: '152px' }}>Actions</TheadStyle>
           </tr>
         </thead>
         <tbody>
-        	{ inTable.ready ? inTable[inTable.mode].length ? inTable[inTable.mode].map(({ id, name, email, admin }, index) => 
+        	{inTable.ready && inTable.users.length ? inTable.users.map(({ id, name, email, admin }, index) => 
           		<TrStyle scope='row' key={ email }>
                 <td> { index + 1 }</td>
                 <td> { name } </td>
@@ -287,8 +272,7 @@ const User = ({ token }) => {
                   }} color={ mode.label === 'Delete' ? user.id === id ? 'secondary' : 'danger' : 'danger' } disabled={ mode.label === 'Delete' ? user.id === id : false } size='sm'>Delete</Button>
                 </td>
               </TrStyle>
-        	) : <tr><td colSpan='5' style={{ textAlign: 'center' }}>{ inTable.failed ? 'Reconnecting..' : 'No one found :(' }</td></tr> :
-          <tr><td colSpan='5' style={{ textAlign: 'center' }}>Loading...</td></tr> }
+        	) : <tr><td colSpan='5' style={{ textAlign: 'center' }}>{ inTable.failed ? 'Reconnecting..' : 'No one found :(' }</td></tr>}
         </tbody>
       </Table>
     </div>

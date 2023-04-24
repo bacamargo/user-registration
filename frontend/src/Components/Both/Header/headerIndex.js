@@ -3,10 +3,11 @@ import { connect } from 'react-redux'
 
 import * as actions from '../../../store/reducers/dashboard/actions'
 
-import {  Area as AreaStyle, toggleMenu as MenuStyle, Title as TitleStyle } from './styles'
+import {  Area as AreaStyle, toggleMenu as MenuStyle, Title as TitleStyle } from './headerStyle'
 
-import DropDown from './DropDown'
+import DropDown from './DropDown/dropDownIndex'
 
+// configurações do cabeçalho da página
 const Header = ({ dashboard, title, menu, dispatch, user, history }) =>
 	<AreaStyle>
 		{ user && <MenuStyle opened={menu} onClick={() => dispatch(actions.toggleMenu(!menu))}>

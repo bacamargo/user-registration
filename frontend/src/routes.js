@@ -6,23 +6,16 @@ import io from './socket'
 
 import { toasts } from './initio_states'
 
-import Home from './pages/Home/'
-import Dashboard from './pages/Dashboard'
+import Home from './pages/Home/indexHome'
+import Dashboard from './pages/Dashboard/indexDash'
 
+
+// rotas da aplicação definidas
 const Routes = () => {
 	const { addToast } = useToasts()
 
 	useEffect(() => {
-		io.on('reconnect', () => {
-			addToast('Reconnecting..', {
-				...toasts,
-				autoDismiss: true,
-				appearance: 'error'
-			})
-		})
-	})
 
-	useEffect(() => {
 		io.on('disconnect', () => {
 			addToast('Server is down :(', { 
 				...toasts,
@@ -32,7 +25,7 @@ const Routes = () => {
 		})
 
 		io.on('connect', () => {
-			addToast('Server running :)', { 
+			addToast('Server is running :)', { 
 				...toasts,
 				autoDismiss: false,
 		    appearance: 'success'

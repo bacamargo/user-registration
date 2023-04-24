@@ -2,17 +2,19 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { useToasts } from 'react-toast-notifications'
 
-import { Area as AreaStyle } from './styles'
+import { Area as AreaStyle } from './stylesDash'
 
 import * as actions from '../../store/reducers/dashboard/actions'
 
 import { userInLocalStorage, toasts } from '../../initio_states'
 
-import Content from '../../Components/Dashboard/Content/'
+import Content from '../../Components/Dashboard/Content/contentIndex'
 import Footer from '../../Components/Both/Footer/footerIndex'
-import Header from '../../Components/Both/Header/index'
-import Menu from '../../Components/Dashboard/Menu/'
+import Header from '../../Components/Both/Header/headerIndex'
+import Menu from '../../Components/Dashboard/Menu/menuIndex'
 
+
+// informações relativas ao usuário logado e ao token utilizado
 const Dashboard = ({ menu, history, dispatch }) => {
 	const { addToast } = useToasts()
 

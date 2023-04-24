@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 
+// estilização do menu que aparece ao passar o cursor em cima do usuário logado na página
 export const DropDown = styled.div`
 	position: relative;
 	height: 100%;

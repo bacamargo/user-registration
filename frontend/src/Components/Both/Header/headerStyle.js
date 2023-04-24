@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 
+// estilização do cabeçalho da página
 export const Area = styled.header`
 	grid-area: header;
 	background: linear-gradient(135deg, #0a0a0f, #1f1f2e);

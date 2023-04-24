@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 
+// estilização da área principal 
 export const Area = styled.div`
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;

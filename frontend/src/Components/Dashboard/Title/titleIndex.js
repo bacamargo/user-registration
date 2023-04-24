@@ -1,8 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { Area as AreaStyle} from './styles'
+import { Area as AreaStyle} from './titleStyle'
 
+// informações relativas à página principal, ícones e índice
 const Home = ({ title, subtitle }) => 
 	<AreaStyle>
 		<h1><i className={ title.icon }></i> { title.text }</h1>

@@ -9,9 +9,9 @@ import * as actions from '../../store/reducers/dashboard/actions'
 
 import { userData, toasts, userInLocalStorage } from '../../initio_states'
 
-import { Area as AreaStyle, AreaLimit as AreaLimitStyle, Content as ContentStyle, Base as BaseStyle } from './styles'
+import { Area as AreaStyle, AreaLimit as AreaLimitStyle, Content as ContentStyle, Base as BaseStyle } from './styleHome'
 
-import Header from '../../Components/Both/Header'
+import Header from '../../Components/Both/Header/headerIndex'
 
 
 /* autenticação na página de login e mensagens disparadas em casos de inconsistência */
@@ -49,7 +49,7 @@ const Home = ({ dispatch, history }) => {
 					dispatch(actions.setUser(data))
 					localStorage.setItem(userInLocalStorage, JSON.stringify(data))
 
-					history.push('/dashboard')
+					history.push('/dashboard/home')
 				}).catch(() => {
 					addToast('There is some wrong info', { ...toasts, appearance: 'error' })
 				})
@@ -103,7 +103,7 @@ const Home = ({ dispatch, history }) => {
 				if (window.confirm(`There's already a user signed in. Would you like to proceed with ${user.name}? `)) {
 					delete user.password
 					dispatch(actions.setUser(user))
-					history.push('/dashboard')	
+					history.push('/dashboard/home')	
 				} else {
 					localStorage.removeItem(userInLocalStorage)
 				}

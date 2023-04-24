@@ -2,6 +2,7 @@ import React from 'react'
 
 import { Area as AreaStyle } from './footerStyle'
 
+// configurações do rodapé da página
 const Footer = () => 
 	<AreaStyle>
 		<p>
