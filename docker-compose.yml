@@ -1,0 +1,15 @@
+services:
+  app:
+    image: node:hydrogen
+    command: sh -c "npm i && npm start"
+    ports:
+      - 3000:3000
+    working_dir: /user-registration/app
+    volumes:
+      - ./:/app
+
+  db:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: 
+      POSTGRES_DATABASE: Users
