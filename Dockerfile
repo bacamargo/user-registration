@@ -1,13 +1,19 @@
 FROM node:hydrogen
 
-WORKDIR /user-registration/app
+# Install backend dependencies
+WORKDIR /user-registration/backend
+COPY backend/package*.json ./
+RUN npm i
 
-COPY package.json ./user-registration
-
-COPY . .
-
+# Install frontend dependencies
+WORKDIR /user-registration/frontend
+COPY frontend/package*.json ./
 RUN yarn install
 
-CMD ["npm", "start"]
+# Copy the entire project and start the app
+WORKDIR /user-registration
+COPY . .
 
+CMD ["npm", "run", "start"]
 EXPOSE 3000
+EXPOSE 3001
