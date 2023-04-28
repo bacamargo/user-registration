@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/bacamargo/user-registration#readme",
   "dependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
     "bcrypt": "^5.1.0",
     "bcrypt-nodejs": "^0.0.3",
     "body-parser": "^1.20.2",
