@@ -179,7 +179,7 @@ const User = ({ token }) => {
 	return (
     <div>
       <Form 
-        style={{ maxWidth: '900px', margin: 'auto', padding: '10px' }}
+        style={{ maxWidth: '900px', margin: 'auto', padding: '10px', color: 'black' }}
         onSubmit={submit}
         autoComplete='off'>
         <Row>
