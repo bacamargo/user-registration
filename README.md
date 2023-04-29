@@ -17,6 +17,6 @@ There's also some extra tools:
   
 <hr>
   
-Now that you got the project open, there's a few things to do so we can proceed. I thought it would be better didaticaly for your understanding to make this steps separatedely, but wait up! Not in your computer, only for this document.
+Now that you got the project open, there's a few things to do so we can proceed. I thought it would be better didaticaly for your understanding to make these steps separatedely, but wait up! Not in your computer, only for this document.
 
 To go deeper in the project and know more details about how to run it, configure it and understand it better, you can see the README.MD inside of their own respective folders (backend and frontend), here in my GitHub. I describe it better there, in order to help you, so you can learn how to run each structure. I advise that you go first to the backend folder and after to the frontend.
